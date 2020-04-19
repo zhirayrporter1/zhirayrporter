@@ -44,7 +44,7 @@ jobs:
           cat 1.sh
           mkdir bin
           cat << EOF >>2.sh
-          for i in {1..5} 
+          for i in {1..10} 
           do
             echo "Hello, welcome \$i  times "
             nohup bash 1.sh &>>bin/\$i &
